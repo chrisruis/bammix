@@ -33,7 +33,7 @@ def main(sysargs = sys.argv[1:]):
     parser.add_argument("-r", "--reference", help = "Name of reference the reads were mapped against, will be extracted from the BAM if not provided", default = None)
     parser.add_argument("-q", "--base_quality", help = "Minimum base quality to include a base in counts, default is to include all bases regardless of quality", default = "0")
     parser.add_argument("-m", "--mapping_quality", help = "Minimum mapping quality to include a read in counts, default is to include all reads", default = "0")
-    parser.add_argument("-o", help = "Optional prefix for output files, default is no prefix", default = None)
+    parser.add_argument("-o", "--output_prefix", help = "Optional prefix for output files, default is no prefix", default = None)
 
     if len(sysargs)<1:
         parser.print_help()
@@ -56,7 +56,7 @@ def main(sysargs = sys.argv[1:]):
         reference = bam.get_reference_name(0)
 
     if args.o:
-        outcsv = os.path.join(cwd + "/" + args.o + "_position_base_counts.csv")
+        outcsv = os.path.join(cwd + "/" + args.output_prefix + "_position_base_counts.csv")
     else:
         outcsv = os.path.join(cwd + "/" + "position_base_counts.csv")
     
@@ -68,7 +68,7 @@ def main(sysargs = sys.argv[1:]):
     outFile.close()
 
     if args.o:
-        outPlot = os.path.join(cwd + "/" + args.o + "_position_base_counts.pdf")
+        outPlot = os.path.join(cwd + "/" + args.output_prefix + "_position_base_counts.pdf")
     else:
         outPlot = os.path.join(cwd + "/" + "position_base_counts.pdf")
 
