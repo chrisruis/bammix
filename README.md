@@ -15,12 +15,13 @@ optional arguments:
   -p POSITIONS [POSITIONS ...], --positions POSITIONS [POSITIONS ...]
                         Set of positions to be checked
   -r REFERENCE, --reference REFERENCE
-                        Name of reference the reads were mapped against, default MN908947.3
+                        Name of reference the reads were mapped against, will be extracted from the BAM if not provided
   -q BASE_QUALITY, --base_quality BASE_QUALITY
                         Minimum base quality to include a base in counts, default is to include all bases regardless of quality
   -m MAPPING_QUALITY, --mapping_quality MAPPING_QUALITY
                         Minimum mapping quality to include a read in counts, default is to include all reads
-  -o O                  Optional prefix for output files, default is no prefix
+  -o OUTPUT_PREFIX, --output_prefix OUTPUT_PREFIX
+                        Optional prefix for output files, default is no prefix
 ```
 
 ### Install
