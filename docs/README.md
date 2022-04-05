@@ -14,6 +14,8 @@ bammix outputs 2 files - position\_base\_counts.csv containing the read depth, n
 
 ## Additional options
 
+TEST
+
 -r Name of the reference that was mapped against. By default, this is extracted from the BAM file but can additionally be specified here
 
 -m Minimum mapping quality for a read to be included in the counts. By default, this is set to include all reads. If -m is set, only reads with a mapping quality of at least the specified value will be included in the output
