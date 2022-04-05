@@ -11,10 +11,7 @@ bammix -b bam_file.bam -p 1000 2000 3000 4000
 
 bammix outputs 2 files - position\_base\_counts.csv containing the read depth, nucleotide counts and nucleotide proportions at each of the given positions and position\_base\_counts.pdf containing a plot of the proportion of each nucleotide at each of the given positions. These are the default file names, a prefix can be added with -o as outlined below
 
-
-## Additional options
-
-TEST
+<h2>Additional options</h2>
 
 -r Name of the reference that was mapped against. By default, this is extracted from the BAM file but can additionally be specified here
 
