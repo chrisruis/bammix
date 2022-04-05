@@ -4,20 +4,12 @@ import sys
 import os
 import argparse
 import pkg_resources
-import collections
-
-#from scripts.bammix_functions import plot_nucleotides
-#from scripts.bammix_functions import extract_nucleotides
+from collections import Counter
 
 import pysam
 
 from bammix import __version__
-from . import _program
-from scripts import bammix_functions as bfunks
-
-#from bammix import __version__
-#from . import _program
-#from bammix import bammix_functions as bfunks
+from .bammix_functions import *
 
 thisdir = os.path.abspath(os.path.dirname(__file__))
 cwd = os.getcwd()
@@ -55,7 +47,7 @@ def main(sysargs = sys.argv[1:]):
     else:
         reference = bam.get_reference_name(0)
 
-    if args.o:
+    if args.output_prefix:
         outcsv = os.path.join(cwd + "/" + args.output_prefix + "_position_base_counts.csv")
     else:
         outcsv = os.path.join(cwd + "/" + "position_base_counts.csv")
@@ -63,16 +55,16 @@ def main(sysargs = sys.argv[1:]):
     outFile = open(outcsv, "w")
     outFile.write("Position,Total_reads,A_reads,C_reads,G_reads,T_reads,A_proportion,C_proportion,G_proportion,T_proportion\n")
 
-    positions, read_depth, nA, nC, nG, nT = bfunks.extract_nucleotides(bam, args.positions, reference, bq, mq, outFile)
+    positions, read_depth, nA, nC, nG, nT = extract_nucleotides(bam, args.positions, reference, bq, mq, outFile)
     
     outFile.close()
 
-    if args.o:
+    if args.output_prefix:
         outPlot = os.path.join(cwd + "/" + args.output_prefix + "_position_base_counts.pdf")
     else:
         outPlot = os.path.join(cwd + "/" + "position_base_counts.pdf")
 
-    bfunks.plot_nucleotides(positions, read_depth, nA, nC, nG, nT, outPlot)
+    plot_nucleotides(positions, read_depth, nA, nC, nG, nT, outPlot)
 
 if __name__ == "__main__":
     main()
